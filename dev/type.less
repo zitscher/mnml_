@@ -1,0 +1,149 @@
+// Body Appearance
+// -------------------------
+body {
+	.border-box();
+	.font-smoothing();
+	.font-size(@font-size-base);
+	font-family: @font-family-main;
+	color: @color-font;
+	clear: both;
+	background: @color-website;
+
+	* {
+		.border-box();
+	}
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	font-family: @font-family-headings;
+	color: @color-heading;
+}
+
+h1 {
+	.font-size(@font-size-h1);
+}
+
+h2 {
+	.font-size(@font-size-h2);
+}
+
+h3 {
+	.font-size(@font-size-h3);
+}
+
+h4 {
+	.font-size(@font-size-h4);
+}
+
+h6 {
+	.font-size(@font-size-h5);
+}
+
+h6 {
+	.font-size(@font-size-h6);
+}
+
+/* Links */
+a {
+	.transition(color);
+	color: @color-link;
+	text-decoration: none;
+
+	&:hover,
+	&:focus,
+	&:active {
+		color: fade(@color-link-hover, 50%);
+	}
+}
+
+
+hr {
+	background-color: @grey-light;
+	border: 0;
+	height: 1px;
+	margin-bottom: @spacing-base;
+}
+
+/* Text elements */
+p {
+	margin-bottom: @spacing-base;
+}
+
+ul,
+ol {
+	margin: 0 0 @spacing-base 0;
+}
+
+ul {
+	list-style: none;
+}
+
+ol {
+	list-style: decimal;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+	margin-bottom: 0;
+	margin-left: @spacing-small;
+}
+
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin: 0 @spacing-base @spacing-base;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+blockquote {
+	quotes: none;
+	margin: 0 @spacing-base;
+
+	&:before,
+	&:after {
+		content: '';
+		content: none;
+	}
+}
+
+address {
+	margin: 0 0 @spacing-base;
+}
+
+pre {
+	.font-size(@font-size-base);
+	background: @grey-light;
+	font-family: "Courier 10 Pitch", Courier, monospace;
+	line-height: @spacing-base;
+	margin-bottom: @spacing-base;
+	padding: @spacing-base;
+	overflow: auto;
+	max-width: 100%;
+}

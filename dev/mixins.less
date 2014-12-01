@@ -1,0 +1,72 @@
+.border-box() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.border-radius(@radius: @main-border-radius) {
+	border-radius: @radius;
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+}
+
+.background-size(@args) {
+	-webkit-background-size: @args;
+	-moz-background-size: @args;
+	-o-background-size: @args;
+	background-size: @args;
+}
+
+.opacity(@opacity: 1) {
+	-moz-opacity: @opacity;
+	-khtml-opacity: @opacity;
+	-webkit-opacity: @opacity;
+	opacity: @opacity;
+}
+
+.unselectable() {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.truncate(@width: 100%) {
+	width: @width;
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+}
+
+/**
+* Sadly needed for several elements using display:inline-block, so the browser does not allocate space for
+* crlf and other invisible characters. Reference: http://css-tricks.com/fighting-the-space-between-inline-block-elements/ http://davidwalsh.name/remove-whitespace-inline-block
+*/
+.white-space-collapse() {
+	font-size: 0;
+}
+
+.perfect-center() {
+	position: absolute;
+	left: 50% !important;
+	top: 50% !important;
+	.transform(translate(-50%, -50%));
+}
+
+.font-smoothing() {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizelegibility;
+}
+
+.font-size(@size){
+	line-height: (@size * 1.48) + 0px;
+	font-size: ~"@{size}px";
+}
+
+.transition(@kind: all, @time: .15s, @ease: ease-in-out) {
+	-webkit-transition: @kind @time @ease;
+	-moz-transition: @kind @time @ease;
+	-o-transition: @kind @time @ease;
+	-ms-transition: @kind @time @ease;
+	transition: @kind @time @ease;
+}

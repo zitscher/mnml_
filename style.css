@@ -1,0 +1,611 @@
+/*
+Theme Name: mnml_
+Author: Tobias Cichon
+Author URI: http://tobiascichon.com
+Description: A minimalistic boilerplate Wordpress LESS Theme
+Version: 0.1
+License: GNU General Public License
+*/
+/**
+* Sadly needed for several elements using display:inline-block, so the browser does not allocate space for
+* crlf and other invisible characters. Reference: http://css-tricks.com/fighting-the-space-between-inline-block-elements/ http://davidwalsh.name/remove-whitespace-inline-block
+*/
+/* Reset
+-------------------------------------------------------------- */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  font: inherit;
+  font-size: 100%;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
+  /* Corrects text resizing oddly in IE6/7 when body font-size is set using em units http://clagnut.com/blog/348/#c790 */
+
+  -webkit-text-size-adjust: 100%;
+  /* Prevents iOS text size adjust after orientation change, without disabling user zoom */
+
+  -ms-text-size-adjust: 100%;
+  /* www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/ */
+
+}
+code,
+kbd,
+tt,
+var {
+  font: 15px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+abbr,
+acronym {
+  border-bottom: 1px dotted #666;
+  cursor: help;
+}
+mark,
+ins {
+  background: #fff9c0;
+  text-decoration: none;
+}
+sup,
+sub {
+  font-size: 75%;
+  height: 0;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  bottom: 1ex;
+}
+sub {
+  top: .5ex;
+}
+small {
+  font-size: 75%;
+}
+big {
+  font-size: 125%;
+}
+figure {
+  margin: 0;
+}
+table {
+  margin: 0 0 1.5em;
+  width: 100%;
+}
+th {
+  font-weight: bold;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  /* Corrects font size not being inherited in all browsers */
+
+  margin: 0;
+  /* Addresses margins set differently in IE6/7, F3/4, S5, Chrome */
+
+  vertical-align: baseline;
+  *vertical-align: middle;
+  /* Improves appearance and consistency in all browsers */
+
+}
+button,
+input {
+  line-height: normal;
+  /* Addresses FF3/4 setting line-height using !important in the UA stylesheet */
+
+  *overflow: visible;
+  /* Corrects inner spacing displayed oddly in IE6/7 */
+
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  /* Improves usability and consistency of cursor style between image-type 'input' and others */
+
+  -webkit-appearance: button;
+  /* Corrects inability to style clickable 'input' types in iOS */
+
+  line-height: 1;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* Addresses box sizing set to content-box in IE8/9 */
+
+  padding: 0;
+  /* Addresses excess padding in IE8/9 */
+
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  /* Corrects inner padding and border displayed oddly in FF3/4 www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ */
+
+  border: 0;
+  padding: 0;
+}
+textarea {
+  overflow: auto;
+  /* Removes default vertical scrollbar in IE6/7/8/9 */
+
+  vertical-align: top;
+  /* Improves readability and alignment in all browsers */
+
+}
+body {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+  line-height: 26.64px;
+  font-size: 18px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #787878;
+  clear: both;
+  background: #ffffff;
+}
+body * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  clear: both;
+  font-family: "Helvetica Neue", Georgia, serif;
+  color: #404040;
+}
+h1 {
+  line-height: 71.03999999999999px;
+  font-size: 48px;
+}
+h2 {
+  line-height: 50.32px;
+  font-size: 34px;
+}
+h3 {
+  line-height: 41.44px;
+  font-size: 28px;
+}
+h4 {
+  line-height: 26.64px;
+  font-size: 18px;
+}
+h6 {
+  line-height: 23.68px;
+  font-size: 16px;
+}
+h6 {
+  line-height: 20.72px;
+  font-size: 14px;
+}
+/* Links */
+a {
+  -webkit-transition: color 0.15s ease-in-out;
+  -moz-transition: color 0.15s ease-in-out;
+  -o-transition: color 0.15s ease-in-out;
+  -ms-transition: color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out;
+  color: #c0392b;
+  text-decoration: none;
+}
+a:hover,
+a:focus,
+a:active {
+  color: rgba(192, 57, 43, 0.5);
+}
+hr {
+  background-color: #dddddd;
+  border: 0;
+  height: 1px;
+  margin-bottom: 20px;
+}
+/* Text elements */
+p {
+  margin-bottom: 20px;
+}
+ul,
+ol {
+  margin: 0 0 20px 0;
+}
+ul {
+  list-style: none;
+}
+ol {
+  list-style: decimal;
+}
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin: 0 20px 20px;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn,
+cite,
+em,
+i {
+  font-style: italic;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+blockquote {
+  quotes: none;
+  margin: 0 20px;
+}
+blockquote:before,
+blockquote:after {
+  content: '';
+  content: none;
+}
+address {
+  margin: 0 0 20px;
+}
+pre {
+  line-height: 26.64px;
+  font-size: 18px;
+  background: #dddddd;
+  font-family: "Courier 10 Pitch", Courier, monospace;
+  line-height: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  overflow: auto;
+  max-width: 100%;
+}
+input,
+textarea {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border: 1px solid #dddddd;
+  padding: 5px;
+  color: #787878;
+  outline: none;
+}
+input:hover,
+textarea:hover {
+  outline: none;
+}
+input:active,
+textarea:active {
+  outline: none;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+  border: 1px solid #787878;
+}
+form {
+  width: 100%;
+}
+form label {
+  line-height: 23.68px;
+  font-size: 16px;
+}
+form input,
+form textarea {
+  width: 100%;
+}
+form input[type="submit"] {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  line-height: 23.68px;
+  font-size: 16px;
+  text-transform: uppercase;
+  position: relative;
+  border: 0;
+  border-bottom: 2px solid #43140f;
+  width: auto;
+  display: inline-block;
+  padding: 10px;
+  background: #c0392b;
+  color: #ffffff;
+}
+form input[type="submit"]:hover {
+  background: rgba(192, 57, 43, 0.9);
+}
+form input[type="submit"]:active {
+  margin-top: 2px;
+  border-bottom: 0;
+}
+.container {
+  max-width: 720px;
+  padding: 20px;
+  margin: 0 auto;
+  position: relative;
+}
+header {
+  background: #434343;
+  margin: 0 auto;
+}
+header #brand h1 {
+  line-height: 29.6px;
+  font-size: 20px;
+  font-weight: 900;
+  color: #787878;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+header #brand h1 span {
+  font-weight: 200;
+  color: #dddddd;
+  text-transform: lowercase;
+}
+header nav ul {
+  list-style: none;
+  margin: 0;
+}
+header nav ul li {
+  display: inline-block;
+  margin: 0 5px 0 0;
+}
+header nav ul li:last-of-type {
+  margin: 0;
+}
+header nav ul li a {
+  color: #dddddd;
+  font-size: 14px;
+}
+article {
+  background: transparent;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #dddddd;
+}
+article h1 {
+  font-weight: 700;
+}
+article h1 a {
+  text-decoration: none;
+  color: #404040;
+}
+article h1 a:hover {
+  color: #434343;
+}
+article .meta {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+article .meta a {
+  color: #dddddd;
+  text-decoration: none;
+}
+article .meta a:hover {
+  color: rgba(221, 221, 221, 0.5);
+}
+article .content a {
+  text-decoration: none;
+}
+article .content img {
+  width: auto;
+  height: 100%;
+}
+article .meta {
+  line-height: 14.8px;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .9px;
+}
+article .meta div {
+  float: left;
+}
+article .meta .post-categories {
+  list-style: none;
+  margin: 0 0 10px 0;
+}
+article .meta .post-categories li {
+  display: inline-block;
+  margin-right: 10px;
+}
+#pagination {
+  margin-bottom: 20px;
+  width: 100%;
+}
+#pagination .past-page {
+  float: right;
+}
+#pagination .next-page {
+  float: left;
+}
+h3#comments {
+  margin-bottom: 60px;
+  font-size: 16px;
+}
+.commentlist {
+  list-style: none;
+  margin: 0;
+}
+.commentlist .comment {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border: 1px solid #dddddd;
+  margin: 0 0 60px 60px;
+  padding: 20px;
+  position: relative;
+  list-style: none;
+}
+.commentlist .comment .children {
+  margin-top: 20px;
+}
+.commentlist .comment-author {
+  float: left;
+  margin-right: 10px;
+}
+.commentlist .comment-author img {
+  position: absolute;
+  left: -60px;
+  top: 5px;
+}
+.commentlist .comment-author .says {
+  display: none;
+}
+#respond {
+  margin-bottom: 60px;
+}
+#respond > h3 {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+#respond form label {
+  color: #dddddd;
+}
+footer {
+  background: #434343;
+  text-align: center;
+  font-size: 12px;
+}
+@media (max-width: 767px) {
+  header {
+    padding: 0;
+  }
+  header .gravatar {
+    float: none;
+  }
+  header hgroup {
+    width: 100%;
+  }
+}
+.alignleft {
+  display: inline;
+  float: left;
+  margin: 20px 20px 20px 0;
+}
+.alignright {
+  display: inline;
+  float: right;
+  margin: 20px 0 20px 20px;
+}
+.aligncenter {
+  clear: both;
+  display: block;
+  margin: 20px auto;
+}

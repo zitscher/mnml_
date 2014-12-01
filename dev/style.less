@@ -1,0 +1,247 @@
+/*
+Theme Name: mnml_
+Author: Tobias Cichon
+Author URI: http://tobiascichon.com
+Description: A minimalistic boilerplate Wordpress LESS Theme
+Version: 0.1
+License: GNU General Public License
+*/
+
+@import "mixins.less";
+@import "reset.less";
+@import "constants.less";
+@import "type.less";
+@import "form_elements.less";
+@import "form.less";
+
+
+// TODO: Buttons stylen
+// TODO: forms.less / forms anpassen
+
+// Content Container
+// -------------------------
+.container {
+	max-width: @container-width;
+	padding: @spacing-base;
+	margin: 0 auto;
+	position: relative;
+}
+
+// Header
+// -------------------------
+header {
+	background: @color-website-header;
+	margin: 0 auto;
+
+	#brand {
+
+		h1 {
+			.font-size(@font-size-header);
+			font-weight: 900;
+			color: @grey;
+			margin: 0;
+			padding: 0;
+			text-transform: uppercase;
+
+			span {
+				font-weight: 200;
+				color: @grey-light;
+				text-transform: lowercase;
+			}
+		}
+	}
+	
+	nav ul {
+		list-style: none;
+		margin: 0;
+
+		li {
+			display: inline-block;
+			margin: 0 @spacing-tiny 0 0;
+
+			&:last-of-type {
+				margin: 0;
+			}
+
+			a {
+				color: @grey-light;
+				font-size: 14px;
+			}
+		}
+	}
+}
+
+
+// Article
+// -------------------------
+article {
+	background: @color-article;
+	margin-bottom: @spacing-large;
+	border-bottom: 1px solid @color-border;
+	
+	h1 {
+		font-weight: 700;
+		
+		a {
+			text-decoration: none;
+			color: @color-heading;
+			
+			&:hover {
+				color: @secondary;
+			}
+		}
+	}
+	
+	.meta {
+		margin-bottom:  @spacing-base;
+		font-size: 14px;
+		
+		a {
+			color: @grey-light;
+			text-decoration: none;
+			
+			&:hover {
+				color: fade(@grey-light, 50%);
+			}
+		}
+	}
+	
+	.content {
+		a {
+			text-decoration: none;
+		}
+	
+		img {
+			width: auto;
+			height: 100%;
+		}
+	}
+	
+	.meta {	
+		.font-size(10);
+		text-transform: uppercase;
+		letter-spacing: .9px;
+		
+		div {
+			float: left;
+		}
+	
+		.post-categories {
+			list-style: none;
+			margin: 0 0 @spacing-small 0;
+			
+			li {
+				display: inline-block;
+				margin-right: @spacing-small;
+			}
+		}
+	}
+}
+
+#pagination {
+	margin-bottom: @spacing-base;
+	width: 100%;
+	
+	.past-page {
+		float: right;
+	}
+	
+	.next-page {
+		float: left;
+	}
+}
+
+h3#comments {
+	margin-bottom: @spacing-large;
+	font-size: (@font-size-base - 2px);
+}
+
+.commentlist {
+	list-style: none;
+	margin: 0;
+	
+	.comment {
+		.border-radius(@main-border-radius);
+		border: 1px solid @color-border;
+		margin: 0 0 @spacing-large @spacing-large;
+		padding: @spacing-base;
+		position: relative;
+		list-style: none;
+
+		.children {
+			margin-top: @spacing-base;
+		}
+	}
+	
+	.comment-author {
+		float: left;
+		margin-right: @spacing-small;
+		
+		img {
+			position: absolute;
+			left: -@spacing-large;
+			top: @spacing-tiny;
+		}
+		
+		.says {
+			display: none;
+		}
+	}
+}
+
+#respond {
+	margin-bottom: @spacing-large;
+	
+	> h3 {
+		font-size: (@font-size-base - 2px);
+		margin-bottom: 20px;
+	}
+	
+	form label {
+		color: @grey-light;
+	}
+	
+}
+
+
+// Footer
+// -------------------------
+footer {
+	background: @color-website-footer;
+	text-align: center;
+	font-size: 12px;
+}
+
+
+@media (max-width: 767px) {
+	header {
+		padding: 0;
+		
+		.gravatar {
+			float: none;
+		}
+		
+		hgroup {
+			width: 100%;
+		}
+	}
+}
+
+
+// Content Alignment
+// -------------------------
+.alignleft {
+	display: inline;
+	float: left;
+	margin: @spacing-base @spacing-base @spacing-base 0;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin: @spacing-base 0 @spacing-base @spacing-base;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: @spacing-base auto;
+}
