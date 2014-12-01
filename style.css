@@ -379,29 +379,6 @@ pre {
   overflow: auto;
   max-width: 100%;
 }
-input,
-textarea {
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border: 1px solid #dddddd;
-  padding: 5px;
-  color: #787878;
-  outline: none;
-}
-input:hover,
-textarea:hover {
-  outline: none;
-}
-input:active,
-textarea:active {
-  outline: none;
-}
-input:focus,
-textarea:focus {
-  outline: none;
-  border: 1px solid #787878;
-}
 form {
   width: 100%;
 }
@@ -411,7 +388,60 @@ form label {
 }
 form input,
 form textarea {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border: 1px solid #dddddd;
+  padding: 5px;
+  color: #787878;
+  outline: none;
   width: 100%;
+}
+form input:hover,
+form textarea:hover {
+  outline: none;
+}
+form input:active,
+form textarea:active {
+  outline: none;
+}
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border: 1px solid #dddddd;
+}
+form span[role="alert"] {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  line-height: 23.68px;
+  font-size: 16px;
+  padding: 5px 10px;
+  border: 1px solid #c0392b;
+  margin-top: 10px;
+  position: relative;
+}
+form span[role="alert"]:after,
+form span[role="alert"]:before {
+  bottom: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+form span[role="alert"]:after {
+  border-bottom-color: #ffffff;
+  border-width: 7px;
+  margin-left: -7px;
+  right: 20px;
+}
+form span[role="alert"]:before {
+  border-bottom-color: #c0392b;
+  border-width: 8px;
+  margin-left: -8px;
+  right: 19px;
 }
 form input[type="submit"] {
   border-radius: 3px;
@@ -419,7 +449,6 @@ form input[type="submit"] {
   -webkit-border-radius: 3px;
   line-height: 23.68px;
   font-size: 16px;
-  text-transform: uppercase;
   position: relative;
   border: 0;
   border-bottom: 2px solid #43140f;

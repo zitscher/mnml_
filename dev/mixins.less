@@ -70,3 +70,32 @@
 	-ms-transition: @kind @time @ease;
 	transition: @kind @time @ease;
 }
+
+.pseudo-arrow-top(@size: 7px, @arrow-border-color: @red, @arrow-fill-color: @white) {
+	position: relative;
+
+	&:after,
+	&:before {
+		bottom: 100%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
+
+	&:after {
+		border-bottom-color: @arrow-fill-color;
+		border-width: @size;
+		margin-left: -@size;
+		right: @spacing-base;
+	}
+
+	&:before {
+		border-bottom-color: @arrow-border-color;
+		border-width: @size + 1px;
+		margin-left: -(@size + 1px);
+		right: @spacing-base - 1px;
+	}
+}
