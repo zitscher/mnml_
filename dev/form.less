@@ -1,5 +1,7 @@
 form {
 	width: 100%;
+	margin: 0;
+	padding: 0;
 
 	label {
 		.font-size(@font-size-small);
@@ -26,17 +28,23 @@ form {
 			outline: none;
 			border: 1px solid @grey-light;
 		}
-	}
 
+		// TODO
+		&::-webkit-input-placeholder {
+			color: red;
+		}
 
-	span[role="alert"] {
-		.border-radius(@main-border-radius);
-		.font-size(@font-size-small);
-		padding: @spacing-tiny @spacing-small;
-		border: 1px solid @red;
-		margin-top: @spacing-small;
+		&:-moz-placeholder { /* Firefox 18- */
+			color: red;
+		}
 
-		.pseudo-arrow-top();
+		&::-moz-placeholder {  /* Firefox 19+ */
+			color: red;
+		}
+
+		&:-ms-input-placeholder {
+			color: red;
+		}
 	}
 
 	input[type="submit"] {
@@ -62,4 +70,55 @@ form {
 			border-bottom: 0;
 		}
 	}
+
+	// Plugin contact-form-7
+	// -------------------------
+	.wpcf7-response-output,
+	span.wpcf7-not-valid-tip {
+		.border-radius(@main-border-radius);
+		.font-size(@font-size-small);
+		padding: @spacing-tiny @spacing-small;
+		margin-top: @spacing-small;
+	}
+
+	// Notification below input
+	span.wpcf7-not-valid-tip {
+		.pseudo-arrow-top(7px, @red, @red-light);
+		background: @red-light;
+		border: 1px solid @red;
+		color: @red;
+		display: block;
+	}
+
+	// general output message
+	.wpcf7-response-output {
+		margin: 0;
+
+		&.wpcf7-mail-sent-ok {
+			border: 1px solid @green;
+		}
+
+		&.wpcf7-mail-sent-ng {
+			border: 1px solid @red;
+		}
+
+		&.wpcf7-spam-blocked {
+			border: 1px solid @orange;
+		}
+
+		&.wpcf7-validation-errors {
+			border: 1px solid @orange;
+		}
+	}
+}
+
+.screen-reader-response {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	width: 1px;
+	margin: 0;
+	padding: 0;
+	border: 0;
 }

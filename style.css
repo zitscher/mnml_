@@ -381,6 +381,8 @@ pre {
 }
 form {
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 form label {
   line-height: 23.68px;
@@ -410,38 +412,25 @@ form textarea:focus {
   outline: none;
   border: 1px solid #dddddd;
 }
-form span[role="alert"] {
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  line-height: 23.68px;
-  font-size: 16px;
-  padding: 5px 10px;
-  border: 1px solid #c0392b;
-  margin-top: 10px;
-  position: relative;
+form input::-webkit-input-placeholder,
+form textarea::-webkit-input-placeholder {
+  color: red;
 }
-form span[role="alert"]:after,
-form span[role="alert"]:before {
-  bottom: 100%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
+form input:-moz-placeholder,
+form textarea:-moz-placeholder {
+  /* Firefox 18- */
+
+  color: red;
 }
-form span[role="alert"]:after {
-  border-bottom-color: #ffffff;
-  border-width: 7px;
-  margin-left: -7px;
-  right: 20px;
+form input::-moz-placeholder,
+form textarea::-moz-placeholder {
+  /* Firefox 19+ */
+
+  color: red;
 }
-form span[role="alert"]:before {
-  border-bottom-color: #c0392b;
-  border-width: 8px;
-  margin-left: -8px;
-  right: 19px;
+form input:-ms-input-placeholder,
+form textarea:-ms-input-placeholder {
+  color: red;
 }
 form input[type="submit"] {
   border-radius: 3px;
@@ -464,6 +453,70 @@ form input[type="submit"]:hover {
 form input[type="submit"]:active {
   margin-top: 2px;
   border-bottom: 0;
+}
+form .wpcf7-response-output,
+form span.wpcf7-not-valid-tip {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  line-height: 23.68px;
+  font-size: 16px;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+form span.wpcf7-not-valid-tip {
+  position: relative;
+  background: #fff1f1;
+  border: 1px solid #c0392b;
+  color: #c0392b;
+  display: block;
+}
+form span.wpcf7-not-valid-tip:after,
+form span.wpcf7-not-valid-tip:before {
+  bottom: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+form span.wpcf7-not-valid-tip:after {
+  border-bottom-color: #fff1f1;
+  border-width: 7px;
+  margin-left: -7px;
+  right: 20px;
+}
+form span.wpcf7-not-valid-tip:before {
+  border-bottom-color: #c0392b;
+  border-width: 8px;
+  margin-left: -8px;
+  right: 19px;
+}
+form .wpcf7-response-output {
+  margin: 0;
+}
+form .wpcf7-response-output.wpcf7-mail-sent-ok {
+  border: 1px solid #008000;
+}
+form .wpcf7-response-output.wpcf7-mail-sent-ng {
+  border: 1px solid #c0392b;
+}
+form .wpcf7-response-output.wpcf7-spam-blocked {
+  border: 1px solid #ffa500;
+}
+form .wpcf7-response-output.wpcf7-validation-errors {
+  border: 1px solid #ffa500;
+}
+.screen-reader-response {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  width: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 .container {
   max-width: 720px;
