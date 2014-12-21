@@ -26,6 +26,17 @@ register_nav_menus(
 add_theme_support('post-thumbnails');
 
 
+add_action( 'wp_enqueue_scripts', 'add_theme_script' );
+
+function add_theme_script() {
+	wp_enqueue_script(
+		'mnml-script',
+		get_stylesheet_directory_uri() . '/js/mnml_.js',
+		array( 'jquery' )
+	);
+}
+
+
 // Plugin dependencies
 // -------------------------
 require_once dirname(__FILE__) . '/lib/dependencies.php';

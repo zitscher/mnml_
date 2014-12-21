@@ -1,20 +1,25 @@
 form {
+	@labelWidth: 100px;
+
 	width: 100%;
 	margin: 0;
 	padding: 0;
 
-	label {
-		.font-size(@font-size-small);
+	span {
+		position: relative;
 	}
 
 	input,
 	textarea {
 		.border-radius(@main-border-radius);
 		border: 1px solid @color-border;
-		padding: @spacing-tiny;
+		padding: @spacing-small;
 		color: @grey;
 		outline: none;
 		width: 100%;
+		background: @grey-ultralight;
+		transition: @transition;
+		text-indent: @labelWidth;
 
 		&:hover {
 			outline: none;
@@ -29,21 +34,24 @@ form {
 			border: 1px solid @grey-light;
 		}
 
-		// TODO
 		&::-webkit-input-placeholder {
-			color: red;
+			.font-size(@font-size-small);
+			color: @grey-light;
 		}
 
 		&:-moz-placeholder { /* Firefox 18- */
-			color: red;
+			.font-size(@font-size-small);
+			color: @grey-light;
 		}
 
 		&::-moz-placeholder {  /* Firefox 19+ */
-			color: red;
+			.font-size(@font-size-small);
+			color: @grey-light;
 		}
 
 		&:-ms-input-placeholder {
-			color: red;
+			.font-size(@font-size-small);
+			color: @grey-light;
 		}
 	}
 
@@ -52,6 +60,7 @@ form {
 
 		.border-radius(@main-border-radius);
 		.font-size(@font-size-small);
+		text-indent: 0;
 		position: relative;
 		border: 0;
 		border-bottom: @border-width solid darken(@primary, 30%);
@@ -60,6 +69,7 @@ form {
 		padding: @spacing-small;
 		background: @primary;
 		color: @white;
+		width: @labelWidth;
 
 		&:hover {
 			background: fade(@primary, 90%);
@@ -73,6 +83,56 @@ form {
 
 	// Plugin contact-form-7
 	// -------------------------
+	p {
+		position: relative;
+		transition: @transition;
+
+		label {
+			.font-size(@font-size-small);
+			.border-radius(@main-border-radius 0 0 @main-border-radius);
+			width: @labelWidth;
+			color: @white;
+			padding: @spacing-small;
+			background: @green;
+			z-index: 2;
+			display: inline-block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: @transition;
+		}
+
+		span {
+			input {
+				&:focus,
+				&:active {
+					.border-radius(0);
+					text-indent: 0;
+					background: @white;
+					border-left: 0;
+				}
+			}
+
+			textarea {
+				padding-left: @labelWidth + @spacing-small;
+				text-indent: 0;
+
+				&:focus,
+				&:active{
+					padding-left: @spacing-small;
+				}
+			}
+
+			&.focus ~ label {
+				transform: translateX(-100%);
+			}
+		}
+		
+		br {
+			display: none;
+		}
+	}
+
 	.wpcf7-response-output,
 	span.wpcf7-not-valid-tip {
 		.border-radius(@main-border-radius);

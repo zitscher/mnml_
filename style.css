@@ -384,9 +384,8 @@ form {
   margin: 0;
   padding: 0;
 }
-form label {
-  line-height: 23.68px;
-  font-size: 16px;
+form span {
+  position: relative;
 }
 form input,
 form textarea {
@@ -394,10 +393,13 @@ form textarea {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border: 1px solid #dddddd;
-  padding: 5px;
+  padding: 10px;
   color: #787878;
   outline: none;
   width: 100%;
+  background: #efefef;
+  transition: all 0.2s ease-in-out;
+  text-indent: 100px;
 }
 form input:hover,
 form textarea:hover {
@@ -414,23 +416,31 @@ form textarea:focus {
 }
 form input::-webkit-input-placeholder,
 form textarea::-webkit-input-placeholder {
-  color: red;
+  line-height: 23.68px;
+  font-size: 16px;
+  color: #dddddd;
 }
 form input:-moz-placeholder,
 form textarea:-moz-placeholder {
   /* Firefox 18- */
 
-  color: red;
+  line-height: 23.68px;
+  font-size: 16px;
+  color: #dddddd;
 }
 form input::-moz-placeholder,
 form textarea::-moz-placeholder {
   /* Firefox 19+ */
 
-  color: red;
+  line-height: 23.68px;
+  font-size: 16px;
+  color: #dddddd;
 }
 form input:-ms-input-placeholder,
 form textarea:-ms-input-placeholder {
-  color: red;
+  line-height: 23.68px;
+  font-size: 16px;
+  color: #dddddd;
 }
 form input[type="submit"] {
   border-radius: 3px;
@@ -438,6 +448,7 @@ form input[type="submit"] {
   -webkit-border-radius: 3px;
   line-height: 23.68px;
   font-size: 16px;
+  text-indent: 0;
   position: relative;
   border: 0;
   border-bottom: 2px solid #43140f;
@@ -446,6 +457,7 @@ form input[type="submit"] {
   padding: 10px;
   background: #c0392b;
   color: #ffffff;
+  width: 100px;
 }
 form input[type="submit"]:hover {
   background: rgba(192, 57, 43, 0.9);
@@ -453,6 +465,50 @@ form input[type="submit"]:hover {
 form input[type="submit"]:active {
   margin-top: 2px;
   border-bottom: 0;
+}
+form p {
+  position: relative;
+  transition: all 0.2s ease-in-out;
+}
+form p label {
+  line-height: 23.68px;
+  font-size: 16px;
+  border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  -webkit-border-radius: 3px 0 0 3px;
+  width: 100px;
+  color: #ffffff;
+  padding: 10px;
+  background: #7ab893;
+  z-index: 2;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.2s ease-in-out;
+}
+form p span input:focus,
+form p span input:active {
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  text-indent: 0;
+  background: #ffffff;
+  border-left: 0;
+}
+form p span textarea {
+  padding-left: 110px;
+  text-indent: 0;
+}
+form p span textarea:focus,
+form p span textarea:active {
+  padding-left: 10px;
+}
+form p span.focus ~ label {
+  transform: translateX(-100%);
+}
+form p br {
+  display: none;
 }
 form .wpcf7-response-output,
 form span.wpcf7-not-valid-tip {
@@ -497,7 +553,7 @@ form .wpcf7-response-output {
   margin: 0;
 }
 form .wpcf7-response-output.wpcf7-mail-sent-ok {
-  border: 1px solid #008000;
+  border: 1px solid #7ab893;
 }
 form .wpcf7-response-output.wpcf7-mail-sent-ng {
   border: 1px solid #c0392b;
