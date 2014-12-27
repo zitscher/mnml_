@@ -15,7 +15,6 @@ License: GNU General Public License
 @import "form.less";
 
 
-
 // Header
 // -------------------------
 header {
@@ -25,6 +24,7 @@ header {
 	top: 0;
 	background: @color-website-header;
 	margin: 0 auto;
+	z-index: 2;
 
 	h1 {
 		.font-size(@font-size-header);
@@ -86,6 +86,17 @@ header {
 	background-position: 50% 0%;
 }
 
+#content {
+	min-height: 100%;
+	/* equal to footer height */
+	margin-bottom: -@footer-height;
+
+	&:after {
+		content: '';
+		display: block;
+		height: @footer-height;
+	}
+}
 
 // Article
 // -------------------------
@@ -220,9 +231,15 @@ h3#comments {
 // Footer
 // -------------------------
 footer {
+	height: @footer-height;
 	background: @color-website-footer;
+	z-index: 2;
 	text-align: center;
 	font-size: 12px;
+
+	a {
+		line-height: @footer-height;
+	}
 }
 
 
