@@ -10,65 +10,80 @@ License: GNU General Public License
 @import "mixins.less";
 @import "reset.less";
 @import "constants.less";
+@import "kryt.less";
 @import "type.less";
 @import "form.less";
 
 
 
-// TODO: Buttons stylen
-// TODO: forms.less / forms anpassen
-
-// Content Container
-// -------------------------
-.container {
-	max-width: @container-width;
-	padding: @spacing-base;
-	margin: 0 auto;
-	position: relative;
-}
-
 // Header
 // -------------------------
 header {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
 	background: @color-website-header;
 	margin: 0 auto;
 
-	#brand {
-
-		h1 {
-			.font-size(@font-size-header);
-			font-weight: 900;
-			color: @grey;
-			margin: 0;
-			padding: 0;
-			text-transform: uppercase;
-
-			span {
-				font-weight: 200;
-				color: @grey-light;
-				text-transform: lowercase;
-			}
-		}
-	}
-	
-	nav ul {
-		list-style: none;
+	h1 {
+		.font-size(@font-size-header);
+		line-height: 0;
+		vertical-align: top;
+		display: inline-block;
+		font-weight: 900;
+		color: @grey;
 		margin: 0;
+		padding: 0;
+		text-transform: uppercase;
 
-		li {
-			display: inline-block;
-			margin: 0 @spacing-tiny 0 0;
+		span {
+			font-weight: 200;
+			color: @grey-light;
+			text-transform: lowercase;
+		}
 
-			&:last-of-type {
-				margin: 0;
-			}
+		@media @mobile {
+			display: block;
 
-			a {
-				color: @grey-light;
-				font-size: 14px;
+			img {
+				display: block;
+				margin: 0 auto;
 			}
 		}
 	}
+
+	nav {
+		vertical-align: bottom;
+		display: inline-block;
+		padding-left: @spacing-small;
+
+		ul {
+			list-style: none;
+			margin: 0;
+
+			li {
+				display: inline-block;
+				margin: 0 @spacing-small 0 0;
+
+				&:last-of-type {
+					margin: 0;
+				}
+
+				a {
+					.font-size(@font-size-small);
+					color: @white;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+}
+
+.hero {
+	background-size: cover;
+	height: 500px;
+	background-position: 50% 0%;
 }
 
 
@@ -76,9 +91,7 @@ header {
 // -------------------------
 article {
 	background: @color-article;
-	margin-bottom: @spacing-large;
-	border-bottom: 1px solid @color-border;
-	
+
 	h1 {
 		font-weight: 700;
 		
@@ -210,21 +223,6 @@ footer {
 	background: @color-website-footer;
 	text-align: center;
 	font-size: 12px;
-}
-
-
-@media (max-width: 767px) {
-	header {
-		padding: 0;
-		
-		.gravatar {
-			float: none;
-		}
-		
-		hgroup {
-			width: 100%;
-		}
-	}
 }
 
 

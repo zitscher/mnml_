@@ -1,6 +1,6 @@
 // Global Colors
 // -----------------------
-@primary:				#c0392b;
+@primary:				#0072BC;
 @secondary:				#434343;
 
 @black:					#101010;
@@ -8,7 +8,7 @@
 @grey:					#787878;
 @grey-light:			#dddddd;
 @grey-ultralight:		#EFEFEF;
-@grey-dark:				#404040;
+@grey-dark:				#333232;
 @red:					#c0392b;
 @red-light:				#FFF1F1;
 
@@ -19,7 +19,7 @@
 // Site Color Settings
 // -----------------------
 @color-website:			@white;
-@color-website-header:	@secondary;
+@color-website-header:	fade(@secondary, 90%);
 @color-website-footer:	@secondary;
 @color-article:			transparent;
 
@@ -51,8 +51,10 @@
 
 // Typography
 // ----------------------
-@font-family-main:		"Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-headings:	"Helvetica Neue", Georgia, serif;
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
+@font-family-main:		'Lato', sans-serif, Helvetica, Arial;
+@font-family-headings:	'Lato', sans-serif, Georgia, serif;
 
 
 // Border Radius
@@ -70,8 +72,48 @@
 
 // Page widths
 // -------------------------
-@container-width:		720px;
+
 
 // Base Transition
 // -------------------------
 @transition:			all .2s ease-in-out;
+
+
+
+// Breakpoints
+// -------------------------
+// kryt total columns
+// -------------------------
+@kryt-columns: 12;
+
+// Desktop grid size
+// large Screens
+// -------------------------
+@kryt-desktop-xl-width:	1220px;
+@kryt-desktop-xl-gutter:  20px;
+@kryt-desktop-xl-border:   0px;
+
+// Desktop grid size
+// small Screens
+// -------------------------
+@kryt-desktop-sm-width:	980px;
+@kryt-desktop-sm-gutter: 20px;
+@kryt-desktop-sm-border:  0px;
+
+// Tablet grid size
+// -------------------------
+@kryt-tablet-width: 768px;
+@kryt-tablet-gutter: 20px;
+@kryt-tablet-border:  0px;
+
+// Mobile grid size
+// -------------------------
+@kryt-mobile-width:  100%;
+@kryt-mobile-gutter: 20px;
+
+// Breakpoints
+// -------------------------
+@desktop-xl:	~"only screen and (min-width: 1225px)";
+@desktop-sm:	~"only screen and (min-width: 1025px) and (max-width: 1224px)";
+@tablet:		~"only screen and (min-width:  768px) and (max-width: 1024px)";
+@mobile:		~"only screen and (max-width:  767px)";
