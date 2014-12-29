@@ -75,6 +75,12 @@ function load_dependencies() {
 			'required'  		=> false,
 			'force_activation'	=> false,
 		),
+		array(
+			'name'      		=> 'Categories Images',
+			'slug'      		=> 'categories-images',
+			'required'  		=> true,
+			'force_activation'	=> true,
+		),
 	);
 
 	$config = array(
