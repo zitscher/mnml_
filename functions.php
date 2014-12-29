@@ -26,6 +26,17 @@ register_nav_menus(
 add_theme_support('post-thumbnails');
 
 
+// enable custom headers
+// -------------------------
+$custom_header_args = array(
+	'width'         => 140,
+	'height'        => 79,
+	'default-image' => get_template_directory_uri() . '/img/logo_.png',
+	'uploads'       => true,
+);
+add_theme_support('custom-header', $custom_header_args);
+
+
 add_action( 'wp_enqueue_scripts', 'add_theme_script' );
 
 function add_theme_script() {

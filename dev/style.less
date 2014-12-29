@@ -27,29 +27,19 @@ header {
 	z-index: @z-index-high;
 
 	h1 {
-		.font-size(@font-size-header);
-		line-height: 0;
-		vertical-align: top;
-		display: inline-block;
-		font-weight: 900;
-		color: @grey;
-		margin: 0;
-		padding: 0;
-		text-transform: uppercase;
+		// seo -_-'
+		position: absolute;
+		overflow: hidden;
+		clip: rect(1px 1px 1px 1px);
+		height: 1px;
+		width: 1px;
+	}
 
-		span {
-			font-weight: 200;
-			color: @grey-light;
-			text-transform: lowercase;
-		}
+	.title {
+		float: right;
 
-		@media @mobile {
-			display: block;
-
-			img {
-				display: block;
-				margin: 0 auto;
-			}
+		div {
+			.font-size(@font-size-small);
 		}
 	}
 
