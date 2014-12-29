@@ -4,14 +4,12 @@
 <?php get_template_part('head'); ?>
 
 <body <?php body_class(); ?>>
-	<div id="content">
+	<?php get_template_part('hero'); ?>
 
+	<div id="content">
 		<?php get_header(); ?>
 
-		<?php get_template_part('hero'); ?>
-
-		<div class="container" role="main">
-
+		<div class="main container" role="main">
 			<div class="row">
 				<div class="col-12">
 				<?php

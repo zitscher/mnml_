@@ -24,7 +24,7 @@ header {
 	top: 0;
 	background: @color-website-header;
 	margin: 0 auto;
-	z-index: 2;
+	z-index: @z-index-high;
 
 	h1 {
 		.font-size(@font-size-header);
@@ -81,15 +81,29 @@ header {
 }
 
 .hero {
+	z-index: @z-index-low;
 	background-size: cover;
-	height: 500px;
+	height: @hero-height;
 	background-position: 50% 0%;
+
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+
+	&.fallback {
+		height: 120px;
+	}
 }
 
+// for sticky footer
 #content {
+	z-index: @z-index-base;
+	background: @color-website;
+	margin-bottom: -@footer-height;
+	position: relative;
 	min-height: 100%;
 	/* equal to footer height */
-	margin-bottom: -@footer-height;
 
 	&:after {
 		content: '';
@@ -98,11 +112,13 @@ header {
 	}
 }
 
+.main {
+	margin-top: @hero-height;
+}
+
 // Article
 // -------------------------
 article {
-	background: @color-article;
-
 	h1 {
 		font-weight: 700;
 		
@@ -231,6 +247,7 @@ h3#comments {
 // Footer
 // -------------------------
 footer {
+	position: relative;
 	height: @footer-height;
 	background: @color-website-footer;
 	z-index: 2;
@@ -238,6 +255,7 @@ footer {
 	font-size: 12px;
 
 	a {
+		color: @white;
 		line-height: @footer-height;
 	}
 }
