@@ -7,6 +7,7 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri() . '/style.css' ?>">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 	<?php wp_head(); ?>
 </head>

@@ -47,6 +47,16 @@ function add_theme_script() {
 	);
 }
 
+// custom contact fields
+// -------------------------
+add_filter('contact_details', function($details) {
+		$details['heading'] = __('Überschrift');
+		$details['facebook_title'] = __('Facebook Title');
+		$details['facebook_link'] = __('Facebook Link');
+		unset($details['fax']);
+		unset($details['mobile']);
+    return $details;
+} );
 
 // Plugin dependencies
 // -------------------------
@@ -63,21 +73,9 @@ function load_dependencies() {
 			'force_activation'	=> false,
 		),
 		array(
-			'name'      		=> 'Jetpack',
-			'slug'      		=> 'jetpack',
-			'required'  		=> false,
-			'force_activation'	=> false,
-		),
-		array(
 			'name'      		=> 'Contact Form 7',
 			'slug'      		=> 'contact-form-7',
 			'required'			=> false,
-			'force_activation'	=> false,
-		),
-		array(
-			'name'      		=> 'WooCommerce',
-			'slug'      		=> 'woocommerce',
-			'required'  		=> false,
 			'force_activation'	=> false,
 		),
 		array(
@@ -87,10 +85,16 @@ function load_dependencies() {
 			'force_activation'	=> false,
 		),
 		array(
+			'name'      		=> 'Contact Details',
+			'slug'      		=> 'contact',
+			'required'  		=> true,
+			'force_activation'	=> false,
+		),
+		array(
 			'name'      		=> 'Categories Images',
 			'slug'      		=> 'categories-images',
 			'required'  		=> true,
-			'force_activation'	=> true,
+			'force_activation'	=> false,
 		),
 	);
 
