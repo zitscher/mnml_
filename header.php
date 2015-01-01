@@ -9,13 +9,18 @@
 			</div>
 		<?php } ?>
 
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+		<a class="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 			<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
 		</a>
 
-		<nav role="navigation">
-			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-		</nav>
+		<?php
+			$defaults = array(
+				'theme_location'  => 'primary',
+				'container'       => 'nav',
+			);
+
+			wp_nav_menu($defaults);
+		?>
 	</div>
 </header>
 
