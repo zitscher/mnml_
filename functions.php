@@ -130,3 +130,94 @@ function load_dependencies() {
 
 	tgmpa( $plugins, $config );
 }
+
+// Hero Headings Meta
+// -------------------------
+function prfx_hero_meta() {
+	add_meta_box('prfx_meta', __('Hero Heading Meta', 'prfx-textdomain'), 'prfx_hero_callback', 'page');
+}
+add_action('add_meta_boxes', 'prfx_hero_meta');
+
+function prfx_hero_callback( $post ) {
+	wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );
+	$prfx_stored_meta = get_post_meta( $post->ID );
+	?>
+
+	<p>
+		<label for="hero-heading"><?php _e( 'Hero Heading', 'prfx-textdomain' )?></label>
+		<input type="text" name="hero-heading" id="hero-heading" value="<?php if ( isset ( $prfx_stored_meta['hero-heading'] ) ) echo $prfx_stored_meta['hero-heading'][0]; ?>" />
+	</p>
+	<p>
+		<label for="hero-description"><?php _e( 'Hero Description', 'prfx-textdomain' )?></label>
+		<input type="text" name="hero-description" id="hero-description" value="<?php if ( isset ( $prfx_stored_meta['hero-description'] ) ) echo $prfx_stored_meta['hero-description'][0]; ?>" />
+	</p>	
+
+<?php
+}
+
+function prfx_meta_save( $post_id ) {
+	// Checks save status
+	$is_autosave = wp_is_post_autosave( $post_id );
+	$is_revision = wp_is_post_revision( $post_id );
+	$is_valid_nonce = ( isset( $_POST[ 'prfx_nonce' ] ) && wp_verify_nonce( $_POST[ 'prfx_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
+
+	// Exits script depending on save status
+	if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
+		return;
+	}
+
+	// Checks for input and sanitizes/saves if needed
+	if( isset( $_POST[ 'hero-heading' ] ) ) {
+		update_post_meta( $post_id, 'hero-heading', sanitize_text_field( $_POST[ 'hero-heading' ] ) );
+	}
+	if( isset( $_POST[ 'hero-description' ] ) ) {
+		update_post_meta( $post_id, 'hero-description', sanitize_text_field( $_POST[ 'hero-description' ] ) );
+	}
+
+}
+add_action( 'save_post', 'prfx_meta_save' );
+
+// Grid stuff
+// TODO
+function create_start_column($atts) {
+	extract(shortcode_atts(array(
+							   'count' => 12
+						   ), $atts));
+	return '<div class="col-' . $count . '">';
+}
+
+function create_end_column() {
+	return '</div>';
+}
+
+add_shortcode('column-start', 'create_start_column');
+add_shortcode('column-end',   'create_end_column');
+
+
+add_shortcode( 'widget', 'my_widget_shortcode' );
+function my_widget_shortcode( $atts ) {
+
+	// Configure defaults and extract the attributes into variables
+	extract(
+		shortcode_atts(
+			array(
+				'type' => '',
+				'title' => '',
+			),
+			$atts
+		)
+	);
+
+	$args = array(
+		'before_widget' => '<section class="box widget">',
+		'after_widget' => '</section>',
+		'before_title' => '<h2 class="widget-title">',
+		'after_title' => '</h2>',
+	);
+
+	ob_start();
+	the_widget($type, $atts, $args);
+	$output = ob_get_clean();
+
+	return $output;
+}
