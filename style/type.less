@@ -20,6 +20,7 @@ body {
 	color: @color-font;
 	clear: both;
 	background: @color-website;
+	background: @white;
 }
 
 /* Headings */
@@ -61,13 +62,24 @@ h6 {
 /* Links */
 a {
 	.transition(color);
+	position: relative;
+	display: inline-block;
+	outline: none;
 	color: @color-link;
+	vertical-align: bottom;
 	text-decoration: none;
+	white-space: nowrap;
+	-webkit-transition: background-color 0.2s, border-color 0.2s;
+	transition: background-color 0.2s, border-color 0.2s;
 
 	&:hover,
 	&:focus,
 	&:active {
-		color: lighten(@color-link-hover, 30%);
+		background-color: fade(@color-link, 40%);
+	}
+
+	&.classic {
+		border-bottom: 0px;
 	}
 }
 

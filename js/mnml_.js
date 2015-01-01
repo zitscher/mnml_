@@ -1,16 +1,36 @@
 var mnml = mnml || {};
 
+// application variables
+mnml.global = mnml.global || {};
+
+mnml.global = {
+	pageOffset: 0,
+	hero: false,
+	heroSection: false,
+	heroHeight: false,
+	header: false,
+	logo: false
+}
+
 mnml.init = function() {
+	mnml.cacheElements();
+
 	// initialize forms
 	var form = jQuery('form');
 	if(form.length){
 		mnml.function.modifyContactForm(form);
 	};
 
-	// init parallax hero
-	mnml.function.initParallaxHero();
+	mnml.function.initScrollingCalculations();
 };
 
+mnml.cacheElements = function() {
+	mnml.global.hero = jQuery('.hero');
+	mnml.global.heroSection = mnml.global.hero.find('section');
+	mnml.global.heroHeight = mnml.global.hero.outerHeight();
+	mnml.global.header = jQuery('header');
+	mnml.global.logo = mnml.global.header.find('img');
+}
 
 mnml.function = mnml.function || {};
 
@@ -31,11 +51,7 @@ mnml.function.modifyContactForm = function(form) {
 	});
 };
 
-
-mnml.function.initParallaxHero = function(form) {
-	var hero = jQuery('.hero');
-	var header = jQuery('header');
-	var parallaxDividerValue = 4;
+mnml.function.initScrollingCalculations = function() {
 	var parallaxScrollEventInMs = 10;
 
 	var scrollHandling = {
@@ -48,17 +64,45 @@ mnml.function.initParallaxHero = function(form) {
 
 	jQuery(document).on('scroll', function() {
 		if(scrollHandling.allow) {
-			var offset = -(header.offset().top / parallaxDividerValue) + 'px';
+			// save page offset
+			mnml.global.pageOffset = mnml.global.hero.offset().top;
 
-			hero.css({
-				'transform': 'translate3d(0px,' + offset + ',0px)'
-			});
+			mnml.function.calculateHero();
+			mnml.function.calculateHeader();
 
 			scrollHandling.allow = false;
 			setTimeout(scrollHandling.reallow, scrollHandling.delay);
 		}
 	});
+}
+
+mnml.function.calculateHero = function() {
+	var heroDivider = 4;
+	var heroSectionDivider = 300;
+
+	var offsetHero = -(mnml.global.pageOffset / heroDivider) + 'px';
+	var offsetHeroSection = 1 - (mnml.global.pageOffset / heroSectionDivider) ;
+
+	mnml.global.hero.css({
+		'transform': 'translate3d(0px,' + offsetHero + ',0px)'
+	});
+
+	mnml.global.heroSection.css({
+		'opacity': offsetHeroSection
+	});
 };
+
+mnml.function.calculateHeader = function() {
+	var threshold = 180;
+	if(mnml.global.pageOffset > (mnml.global.heroHeight - threshold)) {
+		mnml.global.header.addClass('compact');
+		//mnml.global.logo.slideUp();
+	}
+	else {
+		mnml.global.header.removeClass('compact');
+		//mnml.global.logo.slideDown();
+	}
+}
 
 
 // init application
