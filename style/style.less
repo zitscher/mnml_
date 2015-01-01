@@ -1,0 +1,125 @@
+/*
+Theme Name: mnml_
+Author: Tobias Cichon
+Author URI: http://tobiascichon.com
+Description: A minimalistic boilerplate Wordpress LESS Theme
+Version: 0.1
+License: GNU General Public License
+*/
+
+@import "mixins.less";
+@import "reset.less";
+@import "constants.less";
+@import "kryt.less";
+@import "type.less";
+@import "form.less";
+
+@import "element/header.less";
+@import "element/hero.less";
+@import "element/article.less";
+@import "element/footer.less";
+
+
+
+// for sticky footer
+#content {
+	z-index: @z-index-base;
+	background: @color-website;
+	margin-bottom: -@footer-height;
+	position: relative;
+	min-height: 100%;
+	/* equal to footer height */
+
+	&:after {
+		content: '';
+		display: block;
+		height: @footer-height;
+	}
+}
+
+.main {
+	margin-top: @hero-height;
+}
+
+#pagination {
+	margin-bottom: @spacing-base;
+	width: 100%;
+	
+	.past-page {
+		float: right;
+	}
+	
+	.next-page {
+		float: left;
+	}
+}
+
+h3#comments {
+	margin-bottom: @spacing-large;
+	font-size: (@font-size-base - 2px);
+}
+
+.commentlist {
+	list-style: none;
+	margin: 0;
+	
+	.comment {
+		.border-radius(@main-border-radius);
+		border: 1px solid @color-border;
+		margin: 0 0 @spacing-large @spacing-large;
+		padding: @spacing-base;
+		position: relative;
+		list-style: none;
+
+		.children {
+			margin-top: @spacing-base;
+		}
+	}
+	
+	.comment-author {
+		float: left;
+		margin-right: @spacing-small;
+		
+		img {
+			position: absolute;
+			left: -@spacing-large;
+			top: @spacing-tiny;
+		}
+		
+		.says {
+			display: none;
+		}
+	}
+}
+
+#respond {
+	margin-bottom: @spacing-large;
+	
+	> h3 {
+		font-size: (@font-size-base - 2px);
+		margin-bottom: 20px;
+	}
+	
+	form label {
+		color: @grey-light;
+	}
+	
+}
+
+// Content Alignment
+// -------------------------
+.alignleft {
+	display: inline;
+	float: left;
+	margin: @spacing-base @spacing-base @spacing-base 0;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin: @spacing-base 0 @spacing-base @spacing-base;
+}
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: @spacing-base auto;
+}

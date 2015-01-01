@@ -1,0 +1,77 @@
+// Header
+// -------------------------
+header {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	background: fade(@color-website-header, 70%);
+	margin: 0 auto;
+	z-index: @z-index-high;
+	border-bottom: 1px solid @color-website-header;
+	transition: @transition;
+
+	&.compact {
+		background: fade(@color-website-header, 90%);
+
+		img {
+			width: 70px;
+			height: 40px;
+		}
+	}
+
+	h1 {
+		// seo -_-'
+		position: absolute;
+		overflow: hidden;
+		clip: rect(1px 1px 1px 1px);
+		height: 1px;
+		width: 1px;
+	}
+
+	a.home {
+		display: inline-block;
+		width: 140px;
+
+		img {
+			display: block;
+			margin: 0 auto;
+			transition: @transition;
+		}
+	}
+
+
+	.title {
+		float: right;
+
+		div {
+			.font-size(@font-size-small);
+		}
+	}
+
+	nav {
+		vertical-align: super;
+		display: inline-block;
+		padding-left: @spacing-base;
+
+		ul {
+			list-style: none;
+			margin: 0;
+
+			li {
+				display: inline-block;
+				margin: 0 @spacing-small 0 0;
+
+				&:last-of-type {
+					margin: 0;
+				}
+
+				a {
+					.font-size(@font-size-small);
+					color: @white;
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,39 @@
+// Hero
+// -------------------------
+.hero {
+	z-index: @z-index-low;
+	background-size: cover;
+	height: @hero-height;
+	background-position: 50% 0%;
+
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+
+	&.fallback {
+		height: 120px;
+	}
+
+	section {
+		.perfect-center();
+
+		h2,
+		p {
+			color: @white;
+			text-shadow: 0 0 8px rgba(0,0,0,.3);
+			display: block;
+			text-align: center;
+		}
+
+		h2 {
+			.font-size(60);
+			color: @secondary;
+			text-transform: uppercase;
+		}
+
+		p {
+			.font-size(@font-size-header);
+		}
+	}
+}
