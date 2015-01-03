@@ -15,8 +15,7 @@
 
 		<?php
 			$defaults = array(
-				'theme_location'  => 'primary',
-				'container'       => 'nav',
+				'container' => 'nav',
 			);
 
 			wp_nav_menu($defaults);
