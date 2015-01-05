@@ -21,6 +21,22 @@ body {
 	clear: both;
 	background: @color-website;
 	background: @white;
+
+	// fake border
+	&:before {
+		content: '';
+		height: 1px;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		display: block;
+		background: @grey;
+		z-index: @z-index-high;
+	}
+
+	&.compact:before {
+		display: none;
+	}
 }
 
 /* Headings */

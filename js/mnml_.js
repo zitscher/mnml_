@@ -95,12 +95,15 @@ mnml.function.calculateHero = function() {
 };
 
 mnml.function.calculateHeader = function() {
-	var threshold = 120;
-	if(mnml.global.pageOffset > (mnml.global.heroHeight - threshold)) {
-		mnml.global.header.addClass('compact');
+	var css_class = 'compact';
+
+	if(mnml.global.pageOffset > (mnml.global.heroHeight)) {
+		jQuery('body').addClass(css_class);
+		mnml.global.header.addClass(css_class);
 	}
 	else {
-		mnml.global.header.removeClass('compact');
+		jQuery('body').removeClass(css_class);
+		mnml.global.header.removeClass(css_class);
 	}
 }
 
