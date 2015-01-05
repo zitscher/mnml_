@@ -9,10 +9,34 @@
 	position: fixed;
 	left: 0;
 	right: 0;
-	top: 0;
+	top: @header-height;
 
 	&.fallback {
 		height: 120px;
+	}
+
+	#map-canvas {
+		width: 100%;
+		height: 100%;
+
+		.map-window {
+			min-width: 140px;
+
+			h3 {
+				.font-size(15);
+			}
+
+			p {
+				.font-size(13);
+				margin: 0;
+			}
+
+			// damn you nl2br
+			br:nth-of-type(even) {
+				display: none;
+			}
+		}
+
 	}
 
 	section {

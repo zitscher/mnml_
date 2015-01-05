@@ -1,9 +1,11 @@
 <?php
 
 include_once 'function/theme_support.php';
-include_once 'function/hero_meta.php';
 include_once 'function/dependencies.php';
 include_once 'function/shortcode_widget_load.php';
+include_once 'function/hero_meta.php';
+include_once 'function/location_meta.php';
+
 
 // load theme javascript
 // -------------------------
@@ -15,6 +17,18 @@ function add_theme_script() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'add_theme_script' );
+
+
+/**
+ * Adds backend stylesheet when appropriate
+ */
+function add_backend_styles(){
+	global $typenow;
+	if( $typenow == 'page' ) {
+		wp_enqueue_style( 'backend_styles', get_stylesheet_directory_uri() . '/backend.css' );
+	}
+}
+add_action( 'admin_print_styles', 'add_backend_styles' );
 
 
 // custom contact fields

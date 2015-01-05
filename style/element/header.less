@@ -5,10 +5,10 @@ header {
 	left: 0;
 	right: 0;
 	top: 0;
-	background: fade(@color-website-header, 70%);
+	background: @color-website-header;
 	margin: 0 auto;
 	z-index: @z-index-high;
-	border-bottom: 1px solid @color-website-header;
+	border-bottom: 1px solid @grey;
 	transition: @transition;
 
 	&.compact {
@@ -68,7 +68,6 @@ header {
 
 				a {
 					.font-size(@font-size-small);
-					color: @white;
 					text-transform: uppercase;
 				}
 			}

@@ -3,23 +3,30 @@
 // Hero Headings Meta
 // -------------------------
 function prfx_hero_meta() {
-add_meta_box('prfx_meta', __('Hero Heading Meta', 'prfx-textdomain'), 'prfx_hero_callback', 'page');
+add_meta_box('prfx_hero_meta', __('Hero Heading Meta', 'prfx-textdomain'), 'prfx_hero_callback', 'page');
 }
 add_action('add_meta_boxes', 'prfx_hero_meta');
 
-function prfx_hero_callback( $post ) {
-wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );
-$prfx_stored_meta = get_post_meta( $post->ID );
-?>
+function prfx_hero_callback($post)
+{
+	wp_nonce_field(basename(__FILE__), 'prfx_nonce');
+	$prfx_stored_meta = get_post_meta($post->ID);
+	?>
 
-<p>
-	<label for="hero-heading"><?php _e( 'Hero Heading', 'prfx-textdomain' )?></label>
-	<input type="text" name="hero-heading" id="hero-heading" value="<?php if ( isset ( $prfx_stored_meta['hero-heading'] ) ) echo $prfx_stored_meta['hero-heading'][0]; ?>" />
-</p>
-<p>
-	<label for="hero-description"><?php _e( 'Hero Description', 'prfx-textdomain' )?></label>
-	<input type="text" name="hero-description" id="hero-description" value="<?php if ( isset ( $prfx_stored_meta['hero-description'] ) ) echo $prfx_stored_meta['hero-description'][0]; ?>" />
-</p>
+	<p>
+		<label for="hero-heading"><?php _e('Hero Heading', 'prfx-textdomain') ?></label>
+		<input type="text" name="hero-heading" id="hero-heading"
+			   value="<?php if (isset ($prfx_stored_meta['hero-heading'])) {
+				   echo $prfx_stored_meta['hero-heading'][0];
+			   } ?>"/>
+	</p>
+	<p>
+		<label for="hero-description"><?php _e('Hero Description', 'prfx-textdomain') ?></label>
+		<input type="text" name="hero-description" id="hero-description"
+			   value="<?php if (isset ($prfx_stored_meta['hero-description'])) {
+				   echo $prfx_stored_meta['hero-description'][0];
+			   } ?>"/>
+	</p>
 
 <?php
 }

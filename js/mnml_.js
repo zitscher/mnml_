@@ -5,6 +5,7 @@ mnml.global = mnml.global || {};
 
 mnml.global = {
 	pageOffset: 0,
+	page: false,
 	hero: false,
 	heroSection: false,
 	heroHeight: false,
@@ -25,6 +26,7 @@ mnml.init = function() {
 };
 
 mnml.cacheElements = function() {
+	mnml.global.page = jQuery(document);
 	mnml.global.hero = jQuery('.hero');
 	mnml.global.heroSection = mnml.global.hero.find('section');
 	mnml.global.heroHeight = mnml.global.hero.outerHeight();
@@ -65,7 +67,7 @@ mnml.function.initScrollingCalculations = function() {
 	jQuery(document).on('scroll', function() {
 		if(scrollHandling.allow) {
 			// save page offset
-			mnml.global.pageOffset = mnml.global.hero.offset().top;
+			mnml.global.pageOffset = mnml.global.page.scrollTop();
 
 			mnml.function.calculateHero();
 			mnml.function.calculateHeader();
@@ -77,7 +79,7 @@ mnml.function.initScrollingCalculations = function() {
 }
 
 mnml.function.calculateHero = function() {
-	var heroDivider = 4;
+	var heroDivider = 3;
 	var heroSectionDivider = 300;
 
 	var offsetHero = -(mnml.global.pageOffset / heroDivider) + 'px';
@@ -93,15 +95,64 @@ mnml.function.calculateHero = function() {
 };
 
 mnml.function.calculateHeader = function() {
-	var threshold = 180;
+	var threshold = 120;
 	if(mnml.global.pageOffset > (mnml.global.heroHeight - threshold)) {
 		mnml.global.header.addClass('compact');
-		//mnml.global.logo.slideUp();
 	}
 	else {
 		mnml.global.header.removeClass('compact');
-		//mnml.global.logo.slideDown();
 	}
+}
+
+mnml.function.initLocationMap = function(lat, lng, heading, description) {
+	var location = new google.maps.LatLng(lat, lng);
+
+	var mapOptions = {
+		scrollwheel: false,
+		panControl: false,
+		mapTypeControl: false,
+		streetViewControl: false,
+		zoomControl: true,
+		zoomControlOptions: {
+			style: google.maps.ZoomControlStyle.LARGE,
+			position: google.maps.ControlPosition.LEFT_CENTER
+		},
+		zoom: 13,
+		center: location,
+		mapTypeId: 'satellite'
+	};
+
+	var styles = [{"featureType":"landscape","stylers":[{"saturation":-100},{"lightness":60}]},{"featureType":"road.local","stylers":[{"saturation":-100},{"lightness":40},{"visibility":"on"}]},{"featureType":"transit","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"administrative.province","stylers":[{"visibility":"off"}]},{"featureType":"water","stylers":[{"visibility":"on"},{"lightness":30}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ef8c25"},{"lightness":40}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#b6c54c"},{"lightness":40},{"saturation":-40}]},{}];
+	var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
+
+	map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+	map.mapTypes.set('map_style', styledMap);
+	map.setMapTypeId('map_style');
+
+	var contentString = '' +
+		'<div class="map-window">'+
+		'	<h3>' + heading + '</h3>'+
+		'	<p>' + description + '</p>'+
+		'</div>';
+
+	var marker = new google.maps.Marker({
+		position: location,
+		map:map,
+
+		draggable: false,
+		title: "Nettebad"
+	});
+
+	marker.setMap(map);
+
+	var infowindow = new google.maps.InfoWindow({
+		content: contentString
+	});
+
+	infowindow.open(map,marker);
+
+	map.panBy(0, -30);
 }
 
 
