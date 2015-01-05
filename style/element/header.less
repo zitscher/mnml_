@@ -38,6 +38,10 @@ header {
 			margin: 0 auto;
 			transition: @transition;
 		}
+
+		&:hover {
+			background: transparent;
+		}
 	}
 
 
@@ -50,7 +54,7 @@ header {
 	}
 
 	nav {
-		vertical-align: super;
+		vertical-align: bottom;
 		display: inline-block;
 		padding-left: @spacing-base;
 
@@ -68,6 +72,8 @@ header {
 
 				a {
 					.font-size(@font-size-small);
+					.border-radius(@main-border-radius);
+					padding: @spacing-tiny;
 					text-transform: uppercase;
 				}
 			}
