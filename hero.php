@@ -10,7 +10,8 @@
 	}
 	// check if the post has a Post Thumbnail assigned to it.
 	else if (has_post_thumbnail()) {
-		$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' )[0];
+		$image_array = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
+		$large_image_url = $image_array[0];
 	}
 	else if (function_exists('z_taxonomy_image_url') && is_archive()) {
 		$large_image_url = z_taxonomy_image_url();
