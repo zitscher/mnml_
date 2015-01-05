@@ -14,7 +14,7 @@
 			<ul class="col-3">
 				<li>
 					<i class="fa fa-phone"></i>
-					<?php contact_detail('phone'); ?>
+					<a href="tel:<?php contact_detail('phone'); ?>"><?php contact_detail('phone'); ?></a>
 				</li>
 				<li>
 					<i class="fa fa-envelope-o"></i>
@@ -28,7 +28,8 @@
 		<?php } ?>
 
 			<div class="col-6 copyright">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"" rel="generator"><i class="fa fa-copyright"></i> <?php echo date('Y'); ?> <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></a>
+				<i class="fa fa-copyright"></i>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"" rel="generator"><?php echo date('Y'); ?> <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?></a>
 			</div>
 
 		</div>
