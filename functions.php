@@ -67,11 +67,7 @@ function sant_prettyadd ($content, $id, $size, $permalink, $icon, $text) {
 		return $content;
 	}
 
-	$img = wp_get_attachment_image_src( $id, 'thumbnail' );
-	$min_width = 1600;
-	$min_height = 1200;
-
-	$content = preg_replace("/<a/","<a data-size=\"" . $min_width . "x" . $min_height .  "\"",$content,1);
+	$content = preg_replace("/<a/","<a data-size=\"" . 1600 . "x" . 1200 .  "\"",$content,1);
 	return $content;
 }
 
