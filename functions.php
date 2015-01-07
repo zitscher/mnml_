@@ -58,16 +58,6 @@ function create_end_column() {
 add_shortcode('column-start', 'create_start_column');
 add_shortcode('column-end',   'create_end_column');
 
-function add_data_size_attribute ($content, $id, $size, $permalink, $icon, $text) {
-	if ($permalink) {
-		return $content;
-	}
-
-	$content = preg_replace("/<a/","<a data-size=\"" . 1600 . "x" . 1200 .  "\"",$content,1);
-	return $content;
-}
-add_filter( 'wp_get_attachment_link', 'add_data_size_attribute', 10, 6);
-
 
 // Custom filter function to modify default gallery shortcode output
 function my_post_gallery( $output, $attr ) {

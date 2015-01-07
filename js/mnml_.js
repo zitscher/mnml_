@@ -188,16 +188,12 @@ mnml.function.initPhotoswipe = function() {
 
 				linkEl = figureEl.children[0]; // <a> element
 
-				size = linkEl.getAttribute('data-size').split('x');
-
 				// create slide object
 				item = {
 					src: linkEl.getAttribute('href'),
-					w: parseInt(size[0], 10),
-					h: parseInt(size[1], 10)
+					w: 1600,
+					h: 1200
 				};
-
-
 
 				if(figureEl.children.length > 1) {
 					// <figcaption> content
