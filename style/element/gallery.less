@@ -1,0 +1,47 @@
+.gallery {
+	figure {
+		.transition(color);
+		.border-radius(@main-border-radius);
+		border: 1px solid @grey-light;
+		position: relative;
+		display: inline-block;
+		overflow: hidden;
+		padding: @spacing-tiny;
+		margin: @spacing-small;
+
+		a {
+			display: block;
+			overflow: hidden;
+			.border-radius(@main-border-radius);
+
+			img {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+		}
+
+		&:hover {
+			border: 1px solid @primary;
+
+			figcaption {
+				bottom: 0;
+			}
+		}
+
+		figcaption {
+			.font-size(@font-size-small);
+			.transition();
+			.truncate();
+			cursor: pointer;
+			bottom: -45px;
+			left: 0;
+			right: 0;
+			display: block;
+			width: 100%;
+			padding: @spacing-small;
+			position: absolute;
+			background: fade(@color-website-header, 90%);
+		}
+	}
+}
