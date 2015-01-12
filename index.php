@@ -31,8 +31,6 @@
 		</div>
 	</div>
 
-	<?php get_template_part('photoswipe_template'); ?>
-
 	<?php get_footer(); ?>
 </body>
 </html>
