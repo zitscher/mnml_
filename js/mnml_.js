@@ -29,7 +29,7 @@ mnml.cacheElements = function() {
 	mnml.global.page = jQuery(document);
 	mnml.global.hero = jQuery('.hero');
 	mnml.global.heroSection = mnml.global.hero.find('section');
-	mnml.global.heroHeight = mnml.global.hero.outerHeight();
+	mnml.global.heroHeight = mnml.global.hero.outerHeight(true);
 	mnml.global.header = jQuery('header');
 	mnml.global.logo = mnml.global.header.find('img');
 }
@@ -96,8 +96,9 @@ mnml.function.calculateHero = function() {
 
 mnml.function.calculateHeader = function() {
 	var css_class = 'compact';
+	var threshold = 60;
 
-	if(mnml.global.pageOffset > (mnml.global.heroHeight)) {
+	if(mnml.global.pageOffset > (mnml.global.heroHeight - threshold)) {
 		jQuery('body').addClass(css_class);
 		mnml.global.header.addClass(css_class);
 	}

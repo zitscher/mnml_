@@ -16,8 +16,8 @@ add_theme_support('post-thumbnails');
 // enable custom headers
 // -------------------------
 $custom_header_args = array(
-	'width'         => 140,
-	'height'        => 79,
+	'width'         => 120,
+	'height'        => 120,
 	'default-image' => get_template_directory_uri() . '/img/logo_.png',
 	'uploads'       => true,
 );
